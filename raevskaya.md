@@ -803,6 +803,40 @@ __________________________________________
 ## 5.Реализация проекта в среде конкретной СУБД.
 
 ## 5.1. Создание таблиц.
+1.1. Таблица agents (Агенты)
+
+   agent_id (INT, PRIMARY KEY, AUTO_INCREMENT) — Уникальный идентификатор агента
+   first_name (VARCHAR(50)) — Имя агента
+   last_name (VARCHAR(50)) — Фамилия агента
+   phone (VARCHAR(15)) — Телефон агента
+   email (VARCHAR(100)) — Email агента
+   hire_date (DATE) — Дата найма
+
+1.2. Таблица properties (Недвижимость)
+
+   property_id (INT, PRIMARY KEY, AUTO_INCREMENT) — Уникальный идентификатор недвижимости
+   address (VARCHAR(255)) — Адрес недвижимости
+   price (DECIMAL(10, 2)) — Цена недвижимости
+   property_type (VARCHAR(50)) — Тип недвижимости (квартира, дом, коммерческая)
+   size (DECIMAL(10, 2)) — Площадь недвижимости в квадратных метрах
+   agent_id (INT, FOREIGN KEY) — Идентификатор агента, отвечающего за объект (ссылка на agents.agent_id)
+
+1.3. Таблица clients (Клиенты)
+
+   client_id (INT, PRIMARY KEY, AUTO_INCREMENT) — Уникальный идентификатор клиента
+   first_name (VARCHAR(50)) — Имя клиента
+   last_name (VARCHAR(50)) — Фамилия клиента
+   phone (VARCHAR(15)) — Телефон клиента
+   email (VARCHAR(100)) — Email клиента
+
+1.4. Таблица transactions (Сделки)
+
+   transaction_id (INT, PRIMARY KEY, AUTO_INCREMENT) — Уникальный идентификатор сделки
+   property_id (INT, FOREIGN KEY) — Идентификатор недвижимости (ссылка на properties.property_id)
+   client_id (INT, FOREIGN KEY) — Идентификатор клиента (ссылка на clients.client_id)
+   agent_id (INT, FOREIGN KEY) — Идентификатор агента (ссылка на agents.agent_id)
+   transaction_date (DATE) — Дата сделки
+   transaction_amount (DECIMAL(10, 2)) — Сумма сделки
 
 ## 5.2. Создание запросов.
 
